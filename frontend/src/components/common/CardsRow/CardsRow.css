@@ -1,0 +1,44 @@
+.CardsRow {
+  min-height: 300px;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+
+  border: solid 3px black;
+}
+.CardsRow > *{
+  margin: 0.4rem;
+}
+
+.CardsRow__Headding{
+
+}
+.CardsRow__Cards{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* .CardsRow__Cards.no-wrap{
+  flex-wrap: nowrap;
+} */
+
+.CardsRow__Cards.wrap{
+  flex-wrap: wrap;
+}
+
+.CardsRow__Cards > .Card{
+flex: 1;
+}
+
+.CardsRow__footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.CardsRow__footer > button{
+  padding: 0.4rem;
+}

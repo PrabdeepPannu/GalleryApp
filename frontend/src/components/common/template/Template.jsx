@@ -23,7 +23,7 @@ class Template extends React.Component {
       { type: "service" },
       { type: "service" },
     ];
-    const dataModelling = [{ type: "modelling" }, { type: "modelling" }];
+    // const dataModelling = [{ type: "modelling" }, { type: "modelling" }];
     return (
       <div >
         <div className="row align-items-center">
