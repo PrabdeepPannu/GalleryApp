@@ -1,0 +1,74 @@
+.icon-background {
+  color: #c0ffc0;
+}
+
+.circle-icon {
+  background: #ffc0c0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100px;
+  vertical-align: middle;
+  padding: 30px;
+}
+
+.card-service {
+  width: 100px;
+  height: 100px;
+  box-shadow: 1px 1px 1px #888;
+  flex: 0 1 24%;
+  margin: 1rem 0.25em;
+  padding: 10px 60px 10px;
+  opacity: .4;
+}
+
+.card-body {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+#title {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 16px;
+}
+
+#amount {
+  position: absolute;
+  left: 16px;
+  font-size: 18px;
+}
+
+#difference {
+  position: absolute;
+  top: 16px;
+  right: 60px;
+  font-size: 12px;
+}
+
+#comparison {
+  position: absolute;
+  top: 35px;
+  right: 30px;
+  font-size: 9px;
+}
+
+.red {
+  color: red;
+}
+
+.grey {
+  color: #b0b0b0;
+}
+
+.green {
+  color: green;
+}
+
+.serice-text {
+  font-size: 10px;
+  opacity: 1;
+}
