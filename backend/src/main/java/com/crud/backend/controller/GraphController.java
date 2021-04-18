@@ -28,7 +28,7 @@ public class GraphController {
     }
 
     @GetMapping("/graph/{id}")
-    public Graph GetMetric(@PathVariable Integer id) {
+    public Graph GetMetric(@PathVariable String id) {
         return graphRepository.findById(id).orElse(null);
     }
 
