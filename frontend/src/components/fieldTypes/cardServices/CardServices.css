@@ -21,6 +21,7 @@
   margin: 1rem 0.25em;
   padding: 10px 60px 10px;
   opacity: .4;
+  display: inline-table;
 }
 
 .card-body {

@@ -12,7 +12,7 @@ const CardMetrics = (props) => {
       </section>
     ) : (
       <section>
-        <i class="bi bi-arrow-up-short green"></i>
+          <i className="bi bi-arrow-up-short green"></i>
         <p id="difference" className="green">
           {props.percentage + " %"}
         </p>

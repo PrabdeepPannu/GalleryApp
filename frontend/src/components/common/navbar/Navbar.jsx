@@ -5,7 +5,7 @@ class Navbar extends React.Component {
     return (
       <section>
         <div className="searchbar">
-          {/* <Searchbar /> */}
+          <Searchbar />
         </div>
       </section>
     );

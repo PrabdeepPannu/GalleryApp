@@ -1,20 +1,13 @@
 import React from "react";
-import "./CardMetrics.css";
+import Card from "../../common/Card/Card";
+import "./CardModellingData.css";
 
-const CardMetrics = (props) => {
+const CardModellingData = ({ data: { title, url } }) => {
   return (
-    <div className="col-md-4">
-      <div className="card text-center">
-        <div className="overflow">
-          <img src="" alt="" />
-        </div>
-        <div className="card-body">
-          <h4 className="card-title">Card Title</h4>
-          <p className="card-text text-secondary">Test</p>
-        </div>
-      </div>
-    </div>
+    <Card className="card cardModellingData">
+      <div className="text-justify text-break text-wrap paragraph"> <p>{title}hggfchfdahgvafdxuybfg jfkdnsfkacasd uksd gfxsdkyf csd fgxhcnfiud sfu uck tr t</p></div>
+    </Card>
   );
 };
 
-export default CardMetrics;
+export default CardModellingData;
