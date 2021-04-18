@@ -52,7 +52,6 @@ public class ServiceController {
     public void PutService(@RequestBody Service service) {
         Service oldService = sericeRepository.findById(service.getId()).orElse(null);
         oldService.setName(service.getName());
-        oldService.setPicByte(service.getPicByte());
         sericeRepository.save(oldService);
     }
 

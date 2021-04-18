@@ -51,7 +51,6 @@ public class MetricController {
     public void PutMetric(@RequestBody Metric metric) {
         Metric oldMetrics = metricRepository.findById(metric.getId()).orElse(null);
         oldMetrics.setDifference(metric.getDifference());
-        oldMetrics.setService(metric.getService());
         oldMetrics.setModel(metric.getModel());
         oldMetrics.setName(metric.getName());
         metricRepository.save(oldMetrics);

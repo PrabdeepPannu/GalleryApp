@@ -6,18 +6,14 @@ import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,20 +21,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "service", indexes = @Index(name = "idx_service_name", columnList = "name"))
-public class Service {
+@Table(name = "service", indexes = @Index(name = "idx_service_name", columnList = "id, name, type"))
+public class Service extends Parent {
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    @Column(name = "id", nullable = false, columnDefinition = "CHAR(36)")
-    private String id;
-
-    @Column(name = "name")
-    private String Name;
-
-    @Column(name = "type")
-    private String Type;
+    @Builder
+    public Service(String id, String name, String type, String iconUrl) {
+        super(id, name, type);
+        this.iconUrl = iconUrl;
+    }
 
     @Column(name = "icon_url")
     private String iconUrl;
