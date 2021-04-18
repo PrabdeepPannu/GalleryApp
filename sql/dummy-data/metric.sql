@@ -1078,4 +1078,4 @@ INSERT INTO metric (id, name, type, difference, model_id, service_id) VALUES
 ( "2b83f9ab-085e-4f31-b1f1-805da0ba112e", "Cremin LLC-[object Object]-Metric-5", "metric", 14, "fdc6df28-f4e0-4283-9568-95d0ba7b2ecf", "09a02c02-2772-47ba-96c9-6b4e2bfe5859"),
 ( "99d33708-3b24-4a2a-a8cc-3a617b12f929", "Cremin LLC-[object Object]-Metric-5", "metric", 14, "fdc6df28-f4e0-4283-9568-95d0ba7b2ecf", "09a02c02-2772-47ba-96c9-6b4e2bfe5859"),
 ( "c375d105-7b09-4a97-8db1-15791452c8a9", "Cremin LLC-[object Object]-Metric-5", "metric", 14, "fdc6df28-f4e0-4283-9568-95d0ba7b2ecf", "09a02c02-2772-47ba-96c9-6b4e2bfe5859"),
-( "b859fc41-662a-48f8-8c3e-b3b5546163ba", "Cremin LLC-[object Object]-Metric-5", "metric", 14, "fdc6df28-f4e0-4283-9568-95d0ba7b2ecf", "09a02c02-2772-47ba-96c9-6b4e2bfe5859")
+( "b859fc41-662a-48f8-8c3e-b3b5546163ba", "Cremin LLC-[object Object]-Metric-5", "metric", 14, "fdc6df28-f4e0-4283-9568-95d0ba7b2ecf", "09a02c02-2772-47ba-96c9-6b4e2bfe5859");

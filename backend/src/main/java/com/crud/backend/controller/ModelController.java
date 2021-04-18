@@ -29,12 +29,12 @@ public class ModelController {
     }
 
     @GetMapping("/model/{id}")
-    public Model GetModel(@PathVariable Integer id) {
+    public Model GetModel(@PathVariable String id) {
         return modelRepository.findById(id).orElse(null);
     }
 
     @GetMapping("/model/{id}/metric")
-    public List<Metric> GetMetrics(@PathVariable Integer id) {
+    public List<Metric> GetMetrics(@PathVariable String id) {
         Model model = modelRepository.findById(id).orElse(null);
         if (model != null) {
             return model.getMetrics();

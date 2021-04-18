@@ -31,7 +31,7 @@ public class Graph {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     @Column(name = "id", nullable = false, columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(name = "hit")
     private double hit;

@@ -31,8 +31,8 @@ public class Service {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
-    @Column(name = "id", nullable = false, updatable = false,columnDefinition = "VARCHAR(36)")
-    private UUID id;
+    @Column(name = "id", nullable = false, columnDefinition = "CHAR(36)")
+    private String id;
 
     @Column(name = "name")
     private String Name;
@@ -45,8 +45,4 @@ public class Service {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "service", cascade = CascadeType.ALL)
     private List<Model> models = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service", cascade = CascadeType.ALL)
-    private List<Metric> metrics = new ArrayList<>();
-
 }

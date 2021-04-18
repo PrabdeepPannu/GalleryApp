@@ -30,7 +30,7 @@ public class ServiceController {
     }
 
     @GetMapping("/service/{id}/model")
-    public List<Model> GetModels(@PathVariable Integer id) {
+    public List<Model> GetModels(@PathVariable String id) {
         Service service = sericeRepository.findById(id).orElse(null);
         if (service != null) {
             return service.getModels();
@@ -38,17 +38,8 @@ public class ServiceController {
         return null;
     }
 
-    @GetMapping("/service/{id}/metric")
-    public List<Metric> GetMetrics(@PathVariable Integer id) {
-        Service service = sericeRepository.findById(id).orElse(null);
-        if (service != null) {
-            return service.getMetrics();
-        }
-        return null;
-    }
-
     @GetMapping("/service/{id}")
-    public Service GetService(@PathVariable Integer id) {
+    public Service GetService(@PathVariable String id) {
         return sericeRepository.findById(id).orElse(null);
     }
 
