@@ -29,12 +29,12 @@ public class MetricController {
     }
 
     @GetMapping("/metric/{id}")
-    public Metric GetMetric(@PathVariable Integer id) {
+    public Metric GetMetric(@PathVariable String id) {
         return metricRepository.findById(id).orElse(null);
     }
 
     @GetMapping("/metric/{id}/data")
-    public List<Graph> GetData(@PathVariable Integer id) {
+    public List<Graph> GetData(@PathVariable String id) {
         Metric metric = metricRepository.findById(id).orElse(null);
         if (metric != null) {
             return metric.getGraphData();
