@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import com.crud.backend.model.Service;
-import com.crud.backend.model.Metric;
 import com.crud.backend.model.Model;
 import com.crud.backend.repository.ServiceRepository;
 
