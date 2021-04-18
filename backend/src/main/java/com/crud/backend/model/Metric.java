@@ -12,13 +12,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Index;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,23 +23,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "metric", indexes = @Index(name = "idx_metric_name", columnList = "name"))
-public class Metric {
+@Table(name = "metric", indexes = @Index(name = "idx_metric_name", columnList = "id, name, type"))
+public class Metric extends Parent {
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    @Column(name = "id", nullable = false, columnDefinition = "CHAR(36)")
-    private String id;
-
-    @Column(name = "name")
-    private String Name;
-
-    @Column(name = "type")
-    private String Type;
+    @Builder
+    public Metric(String id, String name, String type, int difference) {
+        super(id, name, type);
+        this.difference = difference;
+    }
 
     @Column(name = "difference")
-    private int Difference;
+    private int difference;
 
     @OneToMany(mappedBy = "metric", cascade = CascadeType.ALL)
     private List<Graph> graphData = new ArrayList<>();
