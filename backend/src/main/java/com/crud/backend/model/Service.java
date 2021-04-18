@@ -6,8 +6,11 @@ import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,8 +29,10 @@ import lombok.NoArgsConstructor;
 public class Service {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(name = "id", nullable = false, updatable = false,columnDefinition = "VARCHAR(36)")
+    private UUID id;
 
     @Column(name = "name")
     private String Name;
@@ -35,8 +40,8 @@ public class Service {
     @Column(name = "type")
     private String Type;
 
-    @Column(name = "pic_byte", length = 1000)
-    private byte[] picByte;
+    @Column(name = "icon_url")
+    private String iconUrl;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "service", cascade = CascadeType.ALL)
     private List<Model> models = new ArrayList<>();

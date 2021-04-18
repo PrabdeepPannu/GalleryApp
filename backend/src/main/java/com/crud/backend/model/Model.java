@@ -13,6 +13,7 @@ import javax.persistence.Id;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.IndexedEmbedded;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 
 @Entity
@@ -33,8 +35,10 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 public class Model {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(name = "id", nullable = false, columnDefinition = "CHAR(36)")
+    private UUID id;
 
     @Column(name = "name")
     @FullTextField
@@ -42,6 +46,7 @@ public class Model {
 
     @Column(name = "type")
     private String Type;
+
     @Column(name = "user_name")
     private String userName;
 
