@@ -2,12 +2,12 @@ package com.crud.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +22,13 @@ public class GraphController {
     @Autowired
     private GraphRepository graphRepository;
 
-    @GetMapping("/graph")
+    @RequestMapping(value = "/graph", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Graph> GetData() {
         return graphRepository.findAll();
     }
 
-    @GetMapping("/graph/{id}")
-    public Graph GetMetric(@PathVariable Integer id) {
+    @RequestMapping(value = "/graph/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public Graph GetMetric(@PathVariable String id) {
         return graphRepository.findById(id).orElse(null);
     }
 
