@@ -1,4 +1,4 @@
-// import { Header, Template, Cards } from './components/common';
+import { Header } from './components/common';
 // import { CardMetrics } from './components/fieldTypes';
 
 import './App.css';
@@ -24,6 +24,7 @@ import { ExistingModelledData } from './components/ExistingModelledData/Existing
 export const App = () => {
   return (
     <>
+      <Header />
       <RecommendedMetrics></RecommendedMetrics>
       <RecommendedServices></RecommendedServices>
       <ExistingModelledData></ExistingModelledData>

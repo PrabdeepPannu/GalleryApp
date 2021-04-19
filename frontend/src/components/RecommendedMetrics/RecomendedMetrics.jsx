@@ -1,23 +1,24 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { CardsRow } from '../common/CardsRow/CardsRow'
-import { CardMetrics } from '../fieldTypes'
-import "./RecommendedMetrics.css"
-
+import React, { useEffect, useState } from "react";
+import { CardsRow } from "../common/CardsRow/CardsRow";
+import { CardMetrics } from "../fieldTypes";
+import "./RecommendedMetrics.css";
+import Model from "../../model/Model";
 
 export const RecommendedMetrics = () => {
-  const [metrics, setMetrics] = useState([])
+  const [metrics, setMetrics] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("https://jsonplaceholder.typicode.com/posts")
-      console.log(result.data);
-      setMetrics(result.data)
-    }
-    fetchData()
-  }, [])
+      const metric = new Model("metric");
+      const result = await metric.list();
+      setMetrics(result);
+    };
+    fetchData();
+  }, []);
   return (
     <CardsRow headding="Recommended Metrics">
-      {metrics.map(metric => <CardMetrics key={metric.id} data={metric}></CardMetrics>)}
+      {metrics.map((metric) => (
+        <CardMetrics key={metric.id} data={metric}></CardMetrics>
+      ))}
     </CardsRow>
-  )
-}
+  );
+};
