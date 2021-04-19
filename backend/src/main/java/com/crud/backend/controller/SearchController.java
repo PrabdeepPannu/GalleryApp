@@ -2,6 +2,7 @@ package com.crud.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class SearchController {
     @Autowired
     private SearchRepository searchRepository;
 
-    @GetMapping("/search/{name}")
+    @RequestMapping(value = "/search/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Parent> GetSearchResults(@PathVariable String name) {
         List<Parent> listSearch = new ArrayList<Parent>();
         listSearch.addAll(searchRepository.getServiceByName(name));
@@ -32,17 +33,17 @@ public class SearchController {
         return listSearch;
     }
 
-    @GetMapping("/search/service/{name}")
+    @RequestMapping(value = "/search/service/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Service> GetServices(@PathVariable String name) {
         return searchRepository.getServiceByName(name);
     }
 
-    @GetMapping("/search/model/{name}")
+    @RequestMapping(value = "/search/model/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Model> GetModels(@PathVariable String name) {
         return searchRepository.getModelByName(name);
     }
 
-    @GetMapping("/search/metric/{name}")
+    @RequestMapping(value = "/search/metric/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Metric> GetMetrics(@PathVariable String name) {
         return searchRepository.getMetricByName(name);
     }

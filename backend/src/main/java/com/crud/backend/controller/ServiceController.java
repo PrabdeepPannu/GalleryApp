@@ -2,12 +2,14 @@ package com.crud.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,14 +20,14 @@ import com.crud.backend.repository.ServiceRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
 public class ServiceController {
     @Autowired
     private ServiceRepository sericeRepository;
 
-    @GetMapping("/service")
-    public List<Service> GetServices() {
-        return sericeRepository.findAll();
+    @RequestMapping(value = "/service", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<List<Service>> GetServices() {
+        List<Service> services = sericeRepository.findAll();
+        return ResponseEntity.ok(services);
     }
 
     @GetMapping("/service/{id}/model")

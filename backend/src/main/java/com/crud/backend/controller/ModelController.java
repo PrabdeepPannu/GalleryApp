@@ -2,13 +2,13 @@ package com.crud.backend.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,17 +23,17 @@ public class ModelController {
     @Autowired
     private ModelRepository modelRepository;
 
-    @GetMapping("/model")
+    @RequestMapping(value = "/model", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Model> GetModels() {
         return modelRepository.findAll();
     }
 
-    @GetMapping("/model/{id}")
+    @RequestMapping(value = "/model/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     public Model GetModel(@PathVariable String id) {
         return modelRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/model/{id}/metric")
+    @RequestMapping(value = "/model/{id}/metric", method = RequestMethod.GET, headers = "Accept=application/json")
     public List<Metric> GetMetrics(@PathVariable String id) {
         Model model = modelRepository.findById(id).orElse(null);
         if (model != null) {

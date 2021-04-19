@@ -1,24 +1,26 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { CardsRow } from '../common/CardsRow/CardsRow'
-import CardService from '../fieldTypes/cardServices/CardServices'
-import "./RecommendedServices.css"
+import React, { useEffect, useState } from "react";
+import { CardsRow } from "../common/CardsRow/CardsRow";
+import CardService from "../fieldTypes/cardServices/CardServices";
+import "./RecommendedServices.css";
 
+import Model from "../../model/Model";
 
 export const RecommendedServices = () => {
-  const [services, setServices] = useState([])
+  const [services, setServices] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("https://reqres.in/api/users")
-      console.log(result.data.data)
-      setServices(result.data.data)
-    }
-    fetchData()
-  }, [])
+      const service = new Model("service");
+      const result = await service.list();
+      console.log(result);
+      setServices(result);
+    };
+    fetchData();
+  }, []);
   return (
     <CardsRow headding="Recommended services">
-      {services.map(service => <CardService key={service.id} data={service}></CardService>)}
-
+      {services.map((service) => (
+        <CardService key={service.id} data={service}></CardService>
+      ))}
     </CardsRow>
-  )
-}
+  );
+};

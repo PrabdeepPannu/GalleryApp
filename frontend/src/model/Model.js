@@ -28,7 +28,7 @@ class Model {
     }
     
     async listChild(parentId, childTable) {
-        const children = await axios.ge(`${this.api}/${parentId}/${childTable}`)
+        const children = await axios.get(`${this.api}/${parentId}/${childTable}`)
         return children.data;
     }
 

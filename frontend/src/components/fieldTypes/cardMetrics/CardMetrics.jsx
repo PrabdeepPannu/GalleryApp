@@ -7,14 +7,14 @@ const CardMetrics = (props) => {
       <section>
         <i className="bi bi-arrow-down-short red"></i>
         <p id="difference" className="red">
-          {props.percentage + " %"}
+          {props.difference + " %"}
         </p>
       </section>
     ) : (
       <section>
-          <i className="bi bi-arrow-up-short green"></i>
+        <i className="bi bi-arrow-up-short green"></i>
         <p id="difference" className="green">
-          {props.percentage + " %"}
+          {props.difference + " %"}
         </p>
       </section>
     );
@@ -24,7 +24,7 @@ const CardMetrics = (props) => {
         <img src="" alt="" />
       </div>
       <div className="card-body">
-        <p id="title">{props.title}</p>
+        <p id="title">{props.name}</p>
         <p id="amount">{props.amount}</p>
         {percentage}
         <p id="comparison" className="grey">
