@@ -1,0 +1,12 @@
+.cardModellingData{
+white-space: nowrap;
+overflow: hidden;
+width: 200px;
+height: 150px;
+}
+
+paragraph {
+width: 200px;
+height: 150px;
+ text-overflow: ellipsis;
+}
