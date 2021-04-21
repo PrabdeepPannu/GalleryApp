@@ -1,20 +1,14 @@
 package com.crud.backend.model;
 
 import javax.persistence.Entity;
-
-import javax.persistence.Table;
-
-
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Index;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Table;
+
+import javax.persistence.Index;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "model", indexes = @Index(name = "idx_model_name", columnList = "id, name, type"))
+@Table(name = "model", indexes = @Index(name = "idx_model", columnList = "id, name, type, service_id"))
 public class Model extends Parent {
 
     @Builder
@@ -49,10 +43,7 @@ public class Model extends Parent {
     @Column(name = "query")
     private String query;
 
-    @ManyToOne
-    @JoinColumn(name = "service_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = true)
     private Service service;
-
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
-    private List<Metric> metrics = new ArrayList<>();
 }

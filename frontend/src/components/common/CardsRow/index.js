@@ -1,2 +1,2 @@
 import CardsRow from './CardsRow'
-export default CardsRow
+export default CardsRow;

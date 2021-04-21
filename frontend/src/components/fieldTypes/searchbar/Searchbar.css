@@ -1,61 +1,58 @@
-.search-bar-dropdown {
-  width: 30em;
+.searchbox-container {
+  display: flex;
+  flex-direction: column;
 }
 
-#results {
-  position: absolute;
-  width: inherit;
-  overflow-y: scroll;
-  height: 20em;
-  /* border-bottom: 1px #eeeeee solid; */
+.searchbox {
+  position: relative;
+  width: 100%;
+  align-items: left;
+  display: flex;
+  border: 1px solid grey;
+  border-radius: 2px;
 }
 
-#results > button {
-  background-color: #fafafa;
+.searchbox-elements {
+  width: 60%;
+  height: 100%;
+  margin-top: 20px;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background-color: #eeeeee;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-#search-bar {
-  width: inherit;
-  padding-right: 50px;
-}
-
-.center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
+.searchbox input[type="text"] {
   padding: 10px;
-}
-
-.search-button {
-  margin-left: -50px;
-  height: 20px;
-  width: 50px;
-}
-
-.search-bar {
-  flex-grow: 2;
+  font-size: 15px;
+  float: left;
+  width: 90%;
+  height: 100%;
   border: none;
+}
+
+.btnSearch {
+  float: right;
+  width: 10%;
+  background: rgba(0, 0, 255, 0.556);
+  font-size: 17px;
+  height: 100%;
+}
+
+.btnFilter {
+  display: inline-block;
+  vertical-align: top;
+}
+
+form.searchbox button:hover {
+  background: #6da7d6;
+}
+
+.list-group span {
+  color: "gainsboro";
+}
+
+.list-container {
+  width: 100%;
+}
+
+.list-group-item {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 1px;
 }

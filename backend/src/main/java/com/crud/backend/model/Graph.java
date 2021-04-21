@@ -1,11 +1,10 @@
 package com.crud.backend.model;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import java.util.UUID;
+import javax.persistence.Index;
 
 import javax.persistence.Column;
 
@@ -14,6 +13,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -24,9 +26,9 @@ import javax.persistence.JoinColumn;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "graph")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Table(name = "graph", indexes = @Index(name = "idx_graph", columnList = "metric_id"))
 public class Graph {
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -39,8 +41,8 @@ public class Graph {
     @Column(name = "date")
     private java.sql.Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "metric_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "metric_id", referencedColumnName = "id", nullable = true)
     private Metric metric;
 
 }

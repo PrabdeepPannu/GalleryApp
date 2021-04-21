@@ -5,13 +5,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-
-  border: solid 3px black;
+  z-index: 2
 }
 .CardsRow > *{
   margin: 0.4rem;
 }
 
+.CardsRow__MoreBtn {
+  
+}
 .CardsRow__Headding{
 
 }
@@ -29,9 +31,6 @@
   flex-wrap: wrap;
 }
 
-.CardsRow__Cards > .Card{
-flex: 1;
-}
 
 .CardsRow__footer{
   display: flex;
