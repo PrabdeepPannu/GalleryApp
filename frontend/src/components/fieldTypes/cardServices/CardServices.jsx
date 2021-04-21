@@ -1,15 +1,31 @@
 import React from "react";
 import "./CardServices.css";
-import "./facebook.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Card from "../../common/Card/Card";
+import { faCogs } from "@fortawesome/free-solid-svg-icons";
 
-const CardService = ({ data: { first_name } }) => {
+const CardService = ({ data: { id, name } }) => {
   return (
-    <div className="card card-service mt-3 mr-3 ml-3 mb-3">
-      <p className="serice-text">{first_name}</p>
-      <div className="card-body">
-        {/* <img src={avatar} alt="service name" /> */}
+    <Card
+      className="card-service"
+      minWidth="150px"
+      maxWidth="50px"
+      height="150px"
+    >
+      <p className="serice-text">{name}</p>
+      <div
+        className="circle-icon"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title={name}
+      >
+        <FontAwesomeIcon
+          size="3x"
+          style={{ color: "gainsboro" }}
+          icon={faCogs}
+        />
       </div>
-    </div>
+    </Card>
   );
 };
 

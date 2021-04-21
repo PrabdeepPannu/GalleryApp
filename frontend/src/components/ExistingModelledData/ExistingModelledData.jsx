@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CardsRow } from "../common/CardsRow/CardsRow";
+import { CardsRow } from "../common";
 import { CardModellingData } from "../fieldTypes";
 import "./ExistingModelledData.css";
 
@@ -16,7 +16,7 @@ export const ExistingModelledData = () => {
     fetchData();
   }, []);
   return (
-    <CardsRow headding="Existing modelled data">
+    <CardsRow headding="Existing modelled data" name = "Modelled data">
       {existingModels.map((existingModel) => (
         <CardModellingData
           key={existingModel.id}

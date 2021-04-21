@@ -1,6 +1,8 @@
 import Header from './header';
-import Navbar from './navbar';
+import Card from './Card';
+import CardsRow from './CardsRow'
 export {
     Header,
-    Navbar
+    Card,
+    CardsRow,
 }
