@@ -1,20 +1,6 @@
 import { Header } from './components/common';
-// import { CardMetrics } from './components/fieldTypes';
 
 import './App.css';
-// function App() {
-//   return (
-//     <div className="App">
-//       <div className="container-fluid">
-//         <div className="row">
-//         <Header />
-//         </div>
-//         <div className="row"></div>
-//         <Template />
-//         </div>
-//     </div>
-//   );
-// }
 
 import React from 'react'
 import { RecommendedMetrics } from './components/RecommendedMetrics/RecomendedMetrics';
@@ -23,12 +9,12 @@ import { ExistingModelledData } from './components/ExistingModelledData/Existing
 
 export const App = () => {
   return (
-    <>
+    <div className="App">
       <Header />
       <RecommendedMetrics></RecommendedMetrics>
       <RecommendedServices></RecommendedServices>
       <ExistingModelledData></ExistingModelledData>
-    </>
+    </div>
   )
 }
 

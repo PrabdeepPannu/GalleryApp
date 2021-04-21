@@ -8,46 +8,90 @@
   position: absolute;
   top: 8px;
   left: 16px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 #amount {
   position: absolute;
-  left: 16px;
-  font-size: 18px;
+  top: 60px;
+  left: 20px;
+  font-size: 20px;
 }
 
 #difference {
   position: absolute;
-  top: 16px;
-  right: 60px;
+  top: 70px;
+  font-size: 11px;
+  left: 130px;
+  color: slategray;
+}
+
+#amount_icon {
+  position: absolute;
+  top: 60px;
+  left: 10px;
   font-size: 12px;
 }
 
-#comparison {
+#percentage_green{
   position: absolute;
-  top: 35px;
-  right: 30px;
-  font-size: 9px;
+  top: 30px;
+  font-size: 16px;
+  left: 150px;
+  color: rgb(89, 168, 89);
+  width: 100px;
+}
+
+#percentage_arrow_green{
+  position: absolute;
+  top: 32px;
+  font-size: 16px;
+  left: 90px;
+  color: rgb(89, 168, 89);
+  width: 100px;
+}
+
+#percentage_red {
+  position: absolute;
+  top: 30px;
+  font-size: 16px;
+  left: 150px;
+  color: rgb(133, 16, 16);
+  width: 100px;
+}
+
+#percentage_arrow_red {
+  position: absolute;
+  top: 32px;
+  font-size: 16px;
+  left: 90px;
+  color: rgb(133, 16, 16);
+  width: 100px;
 }
 
 .card {
   width: 200px;
   height: 150px;
   box-shadow: 1px 1px 1px #888;
-  /* flex: 0 1 24%; */
-  margin: 1rem .25em;
+  flex: 0 1 24%;
+  margin: 1rem 0.25em;
   padding: 10px 60px 10px;
 }
 
-.red {
-  color: red;
+.cardMetrics {
+  margin: 15px;
 }
 
-.grey {
-  color: #b0b0b0;
+.cardMetrics p {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 16px;
 }
 
-.green {
-  color: green;
+.card-body p {
+  position: absolute;
+  top: 16px;
+  right: 60px;
+  font-size: 12px;
 }
