@@ -1,17 +1,14 @@
 package com.crud.backend.model;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Table;
+
+
 import javax.persistence.Index;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "metric", indexes = @Index(name = "idx_metric_name", columnList = "id, name, type"))
+@Table(name = "metric", indexes = @Index(name = "idx_metric", columnList = "id, name, type, model_id, service_id"))
 public class Metric extends Parent {
 
     @Builder
@@ -35,11 +32,12 @@ public class Metric extends Parent {
     @Column(name = "difference")
     private int difference;
 
-    @OneToMany(mappedBy = "metric", cascade = CascadeType.ALL)
-    private List<Graph> graphData = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "model_id", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "model_id", referencedColumnName = "id", nullable = true)
     private Model model;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = true)
+    private Service service;
 
 }

@@ -11,7 +11,7 @@ let graphString = [];
 const modelData = ['Target', 'Likes', 'Comments', 'tags', 'Posts', 'Trends'];
 
 
-for (let j = 0; j < 36; j++) {
+for (let j = 0; j < 12; j++) {
     const service = {id: uuid.v4(), name: faker.company.companyName()};
     servicesData.push(`( "${service.id}", "${service.name}", "service", "")`);
     for (let i = 0; i < modelData.length; i++) {
@@ -43,10 +43,10 @@ ${servicesData.join(",\n")}
 
 INSERT INTO model (id, name, type, user_name, password, api, query, service_id) VALUES
 ${modelDataString.join(",\n")}
-INSERT INTO model (id, name, type, difference, model_id, service_id) VALUES
+INSERT INTO metric (id, name, type, difference, model_id, service_id) VALUES
 ${metricsString.join(",\n")}
 
-INSERT INTO model (id, hit, date, metric_id) VALUES
+INSERT INTO graph (id, hit, date, metric_id) VALUES
 ${graphString.join(",\n")}`;
 fs.writeFile( "dummy_data.sql", data, (err) => {
   if (err) console.log(err);

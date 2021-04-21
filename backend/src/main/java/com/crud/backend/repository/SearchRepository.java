@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SearchRepository extends JpaRepository<Parent, String> {
-    @Query(value = "Select * from metric use index(idx_metric_name) where metric.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
+    @Query(value = "Select * from metric use index(idx_metric) where metric.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
     public List<Metric> getMetricByName(@Param("name") String name);
 
-    @Query(value = "Select * from model use index(idx_model_name) where model.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
+    @Query(value = "Select * from model use index(idx_model) where model.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
     public List<Model> getModelByName(@Param("name") String name);
 
-    @Query(value = "Select * from service use index(idx_service_name) where service.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
+    @Query(value = "Select * from service use index(idx_service) where service.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
     public List<Service> getServiceByName(@Param("name") String name);
 }

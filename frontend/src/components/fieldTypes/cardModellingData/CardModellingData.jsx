@@ -1,11 +1,16 @@
 import React from "react";
 import Card from "../../common/Card/Card";
 import "./CardModellingData.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 
-const CardModellingData = ({ data: { title, url } }) => {
+const CardModellingData = ({ data: { name, url } }) => {
   return (
-    <Card className="card cardModellingData">
-      <div className="text-justify text-break text-wrap paragraph"> <p>{title}</p></div>
+    <Card className="cardModellingData card" minWidth="280px" maxWidth = "280px" height="100px">
+      <p id="title">{name}</p>
+      <div className="card-body">
+      <FontAwesomeIcon size="3x" style={{ color: 'gainsboro'}} icon={faDatabase} />
+      </div>
     </Card>
   );
 };
