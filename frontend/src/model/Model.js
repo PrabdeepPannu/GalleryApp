@@ -27,6 +27,11 @@ class Model {
         return model.data;
     }
 
+    async getRecommendedData() {
+        const model = await axios.get(`${this.api}/recommended`);
+        return model.data;
+    }
+
 
 }
 

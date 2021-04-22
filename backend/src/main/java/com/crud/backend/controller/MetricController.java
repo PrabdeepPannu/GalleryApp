@@ -27,6 +27,11 @@ public class MetricController {
         return metricRepository.findAll();
     }
 
+    @GetMapping("/metric/recommended")
+    public List<Metric> GetRecommendeMetrics() {
+        return metricRepository.getRecommendedMetrics();
+    }
+
     @GetMapping("/metric/{id}")
     public Metric GetMetric(@PathVariable String id) {
         return metricRepository.findById(id).orElse(null);

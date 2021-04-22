@@ -120,14 +120,14 @@ function SearchBar() {
               name="Model"
               onClick={handelSearchModelledButton.bind(this)}
             />
-            {/* <div style={{ overflowY: "scroll", height: "51.3vh" }}> */}
-              <ul class="list-group" style={{ overflowY: "scroll", height: "51.3vh" }}>
+            <div style={{ overflowY: "scroll", height: "350px" }}>
+              <ul class="list-group">
                 {state.options.map((item) => (
                   <SeachCard name={item.name} type={item.type} />
                 ))}
               </ul>
             </div>
-          // </div>
+          </div>
         )}
       </div>
     </form>

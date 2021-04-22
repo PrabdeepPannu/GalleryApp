@@ -1,5 +1,4 @@
 import { Header } from './components/common';
-
 import './App.css';
 
 import React from 'react'

@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  z-index: 2
+  z-index: 2;
+  flex-grow: 1
 }
 .CardsRow > *{
   margin: 0.4rem;
@@ -20,16 +21,10 @@
 .CardsRow__Cards{
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   overflow: hidden;
 }
 
-/* .CardsRow__Cards.no-wrap{
-  flex-wrap: nowrap;
-} */
-
-.CardsRow__Cards.wrap{
-  flex-wrap: wrap;
-}
 
 
 .CardsRow__footer{

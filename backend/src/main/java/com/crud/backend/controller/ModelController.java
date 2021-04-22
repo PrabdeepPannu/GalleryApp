@@ -27,6 +27,11 @@ public class ModelController {
         return modelRepository.findAll();
     }
 
+    @GetMapping("/model/recommended")
+    public List<Model> GetRecommendeModels() {
+        return modelRepository.getRecommendedModels();
+    }
+
     @GetMapping("/model/{id}")
     public Model GetModel(@PathVariable String id) {
         return modelRepository.findById(id).orElse(null);

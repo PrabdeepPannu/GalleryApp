@@ -7,7 +7,7 @@ import { faCogs } from "@fortawesome/free-solid-svg-icons";
 const CardService = ({ data: { id, name } }) => {
   return (
     <Card
-      className="card-service"
+      className="card-service mt-4"
       minWidth="150px"
       maxWidth="50px"
       height="150px"

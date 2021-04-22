@@ -10,13 +10,31 @@ export const ExistingModelledData = () => {
   useEffect(() => {
     const fetchData = async () => {
       const model = new Model("model");
-      const result = await model.list();
+      const result = await model.getRecommendedData();
       setExistingModels(result);
     };
     fetchData();
   }, []);
+
+  const handelMoreButton = async (e) => {
+    const model = new Model("model");
+    const result = await model.list();
+    setExistingModels(result);
+  };
+
+  const handelLessButton = async () => {
+    const model = new Model("model");
+    const result = await model.getRecommendedData();
+    setExistingModels(result);
+  };
+
   return (
-    <CardsRow headding="Existing modelled data" name = "Modelled data">
+    <CardsRow
+      headding="Existing modelled data"
+      name="Modelled data"
+      onMoreClick={handelMoreButton.bind(this)}
+      onLessClick={handelLessButton.bind(this)}
+    >
       {existingModels.map((existingModel) => (
         <CardModellingData
           key={existingModel.id}

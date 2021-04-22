@@ -44,6 +44,10 @@ form.searchbox button:hover {
   background: #6da7d6;
 }
 
+.list-group {
+  background-color: white;
+}
+
 .list-group span {
   color: "gainsboro";
 }

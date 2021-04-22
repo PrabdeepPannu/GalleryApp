@@ -10,13 +10,31 @@ export const RecommendedServices = () => {
   useEffect(() => {
     const fetchData = async () => {
       const service = new Model("service");
-      const result = await service.list();
+      const result = await service.getRecommendedData();
       setServices(result);
     };
     fetchData();
   }, []);
+
+  const handelMoreButton = async (e) => {
+    const service = new Model("service");
+    const result = await service.list();
+    setServices(result);
+  };
+
+  const handelLessButton = async () => {
+    const metric = new Model("service");
+    const result = await metric.getRecommendedData();
+    setServices(result);
+  };
+
   return (
-    <CardsRow headding="Recommended services" name="Services">
+    <CardsRow
+      headding="Recommended services"
+      name="Services"
+      onMoreClick={handelMoreButton.bind(this)}
+      onLessClick={handelLessButton.bind(this)}
+    >
       {services.map((service) => (
         <CardServics key={service.id} data={service}></CardServics>
       ))}

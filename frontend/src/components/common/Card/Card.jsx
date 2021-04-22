@@ -5,6 +5,6 @@ export default function Card({ children, maxWidth = "200px", minWidth = "200px",
   return (
     <div className={className ? `Card ${className} ` : "Card"} style={{ minWidth, height, maxWidth }}>
       {children}
-    </div>
+      </div>
   )
 }

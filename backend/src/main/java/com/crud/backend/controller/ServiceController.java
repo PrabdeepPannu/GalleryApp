@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +25,11 @@ public class ServiceController {
     @GetMapping("/service")
     public List<Service> GetServices() {
         return sericeRepository.findAll();
+    }
+
+    @GetMapping("/service/recommended")
+    public List<Service> GetRecommendeServices() {
+        return sericeRepository.getRecommendedServices();
     }
 
     @GetMapping("/service/{id}")

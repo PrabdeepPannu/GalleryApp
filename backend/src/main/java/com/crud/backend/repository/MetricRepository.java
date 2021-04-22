@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MetricRepository extends JpaRepository<Metric, String> {
 
+    // list all the recommended Metrics related to Service table
+    @Query(value = "Select * from metric limit 6", nativeQuery = true)
+    public List<Metric> getRecommendedMetrics();
+
     // list all the Metrics related to Service table
     @Query(value = "Select * from metric use index(idx_metric) where metric.service_id = :serviceId", nativeQuery = true)
     public List<Metric> getMetricByServiceId(@Param("serviceId") String id);

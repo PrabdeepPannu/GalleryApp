@@ -1,29 +1,26 @@
-var React = require("react"),
-  Highcharts = require("highcharts");
+import Highcharts from "highcharts/highstock";
+import HighchartsReact from "highcharts-react-official";
+var React = require("react");
 
-class Header extends React.Component {
-  // When the DOM is ready, create the chart.
-  componentDidMount() {
-    // Extend Highcharts with modules
-    if (this.props.modules) {
-      this.props.modules.forEach(function (module) {
-        module(Highcharts);
-      });
-    }
-    // Set container which the chart should render to.
-    this.chart = new Highcharts[this.props.type || "Chart"](
-      this.props.container,
-      this.props.options
-    );
-  }
-  //Destroy chart before unmount.
-  componentWillUnmount() {
-    this.chart.destroy();
-  }
-  //Create the div which the chart will be rendered to.
-  render() {
-    return React.createElement("div", { id: this.props.container });
-  }
-}
+const options = {
+  title: {
+    text: "My stock chart",
+  },
+  series: [
+    {
+      data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9],
+    },
+  ],
+};
 
-export default Header;
+const Graph = () => (
+  <div>
+    <HighchartsReact
+      highcharts={Highcharts}
+      constructorType={"stockChart"}
+      options={options}
+    />
+  </div>
+);
+
+export default Graph;

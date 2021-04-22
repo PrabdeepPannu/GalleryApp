@@ -70,12 +70,7 @@
 }
 
 .card {
-  width: 200px;
-  height: 150px;
   box-shadow: 1px 1px 1px #888;
-  flex: 0 1 24%;
-  margin: 1rem 0.25em;
-  padding: 10px 60px 10px;
 }
 
 .cardMetrics {

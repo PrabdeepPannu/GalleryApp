@@ -1,3 +1,4 @@
 .Card{
-  flex-grow: 1px;
+  min-width:0;
+  overflow:hidden;
 }
