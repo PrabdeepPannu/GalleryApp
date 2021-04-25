@@ -43,6 +43,7 @@ public class MetricService implements ServiceImpl<Metric> {
                 this.isPositive = true;
             } else {
                 inflation = ((secondLastIndex - lastIndex) / secondLastIndex) * 100;
+                this.isPositive = false;
             }
         }
         return Math.round(inflation);

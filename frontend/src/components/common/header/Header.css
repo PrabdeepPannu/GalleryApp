@@ -19,7 +19,7 @@
 .header-right {
   flex-grow: 3;
   height: 80px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .header-left {
