@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "model", indexes = @Index(name = "idx_model", columnList = "id, name, type, service_id"))
+@Table(name = "model", indexes = @Index(name = "idx_model", columnList = "id, name, type"))
 public class Model extends Parent {
 
     @Builder
@@ -45,5 +45,5 @@ public class Model extends Parent {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = true)
-    private Service service;
+    private Services service;
 }

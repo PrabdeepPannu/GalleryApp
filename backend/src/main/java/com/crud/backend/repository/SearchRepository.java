@@ -6,7 +6,7 @@ import java.util.List;
 import com.crud.backend.model.Metric;
 import com.crud.backend.model.Model;
 import com.crud.backend.model.Parent;
-import com.crud.backend.model.Service;
+import com.crud.backend.model.Services;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +22,5 @@ public interface SearchRepository extends JpaRepository<Parent, String> {
     public List<Model> getModelByName(@Param("name") String name);
 
     @Query(value = "Select * from service use index(idx_service) where service.name LIKE LOWER(CONCAT('%',:name, '%'))", nativeQuery = true)
-    public List<Service> getServiceByName(@Param("name") String name);
+    public List<Services> getServiceByName(@Param("name") String name);
 }
