@@ -12,41 +12,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import com.crud.backend.model.Service;
-import com.crud.backend.repository.ServiceRepository;
+import com.crud.backend.model.Services;
+import com.crud.backend.service.ServicesService;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
 public class ServiceController {
+
     @Autowired
-    private ServiceRepository sericeRepository;
+    private ServicesService servicesService;
 
     @GetMapping("/service")
-    public List<Service> GetServices() {
-        return sericeRepository.findAll();
+    public List<Services> GetServices() {
+        return servicesService.getAll();
     }
 
     @GetMapping("/service/recommended")
-    public List<Service> GetRecommendeServices() {
-        return sericeRepository.getRecommendedServices();
+    public List<Services> GetRecommendeServices() {
+        return servicesService.getRecommendedList();
     }
 
     @GetMapping("/service/{id}")
-    public Service GetService(@PathVariable String id) {
-        return sericeRepository.findById(id).orElse(null);
+    public Services GetService(@PathVariable String id) {
+        return servicesService.getById(id);
     }
 
     @PostMapping("/service")
-    public Service PostService(@RequestBody Service service) {
-        return sericeRepository.save(service);
+    public void PostService(@RequestBody Services service) {
+        servicesService.save(service);
     }
 
     @PutMapping("/service")
-    public void PutService(@RequestBody Service service) {
-        Service oldService = sericeRepository.findById(service.getId()).orElse(null);
-        oldService.setName(service.getName());
-        sericeRepository.save(oldService);
+    public void PutService(@RequestBody Services service) {
+        servicesService.put(service);
     }
 
 }

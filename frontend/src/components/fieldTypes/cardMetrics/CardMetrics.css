@@ -2,6 +2,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+  z-index: 2;
 }
 
 #title {
@@ -9,6 +10,7 @@
   top: 8px;
   left: 16px;
   font-size: 12px;
+  z-index: 2;
 }
 
 #amount {
@@ -16,6 +18,7 @@
   top: 60px;
   left: 20px;
   font-size: 20px;
+  z-index: 2;
 }
 
 #difference {
@@ -24,6 +27,7 @@
   font-size: 11px;
   left: 130px;
   color: slategray;
+  z-index: 2;
 }
 
 #amount_icon {
@@ -31,24 +35,27 @@
   top: 60px;
   left: 10px;
   font-size: 12px;
+  z-index: 2;
 }
 
-#percentage_green{
+#percentage_green {
   position: absolute;
   top: 30px;
   font-size: 16px;
   left: 150px;
   color: rgb(89, 168, 89);
   width: 100px;
+  z-index: 2;
 }
 
-#percentage_arrow_green{
+#percentage_arrow_green {
   position: absolute;
   top: 32px;
   font-size: 16px;
   left: 90px;
   color: rgb(89, 168, 89);
   width: 100px;
+  z-index: 2;
 }
 
 #percentage_red {
@@ -58,6 +65,7 @@
   left: 150px;
   color: rgb(133, 16, 16);
   width: 100px;
+  z-index: 2;
 }
 
 #percentage_arrow_red {
@@ -67,6 +75,7 @@
   left: 90px;
   color: rgb(133, 16, 16);
   width: 100px;
+  z-index: 2;
 }
 
 .card {
@@ -82,6 +91,7 @@
   top: 8px;
   left: 16px;
   font-size: 16px;
+  z-index: 2;
 }
 
 .card-body p {
@@ -89,4 +99,12 @@
   top: 16px;
   right: 60px;
   font-size: 12px;
+  z-index: 2;
+}
+
+.graphContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
 }

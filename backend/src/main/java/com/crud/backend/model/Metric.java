@@ -5,10 +5,11 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Table;
-
-
+import javax.persistence.Transient;
 import javax.persistence.Index;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "metric", indexes = @Index(name = "idx_metric", columnList = "id, name, type, model_id, service_id"))
+@Table(name = "metric", indexes = @Index(name = "idx_metric", columnList = "id, name, type"))
 public class Metric extends Parent {
 
     @Builder
@@ -38,6 +39,17 @@ public class Metric extends Parent {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "service_id", referencedColumnName = "id", nullable = true)
-    private Service service;
+    private Services service;
 
+    @Transient
+    private double inflation;
+
+    @Transient
+    private double maxValue;
+
+    @Transient
+    private List<Double> graphData;
+
+    @Transient
+    private boolean positive;
 }

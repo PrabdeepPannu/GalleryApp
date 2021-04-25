@@ -12,50 +12,45 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import com.crud.backend.repository.ModelRepository;
+import com.crud.backend.service.ModelService;
 import com.crud.backend.model.Model;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
 public class ModelController {
+
     @Autowired
-    private ModelRepository modelRepository;
+    private ModelService modelService;
 
     @GetMapping("/model")
     public List<Model> GetModels() {
-        return modelRepository.findAll();
+        return modelService.getAll();
     }
 
     @GetMapping("/model/recommended")
     public List<Model> GetRecommendeModels() {
-        return modelRepository.getRecommendedModels();
+        return modelService.getRecommendedList();
     }
 
     @GetMapping("/model/{id}")
     public Model GetModel(@PathVariable String id) {
-        return modelRepository.findById(id).orElse(null);
+        return modelService.getById(id);
     }
 
     @GetMapping("/service/{id}/models")
     public List<Model> GetModelsByServiceId(@PathVariable String id) {
-        return modelRepository.getModelByServiceId(id);
+        return modelService.getByParentId(id);
     }
 
     @PostMapping("/model")
-    public Model PostModel(@RequestBody Model model) {
-        return modelRepository.save(model);
+    public void PostModel(@RequestBody Model model) {
+        modelService.save(model);
     }
 
     @PutMapping("/model")
     public void PutModel(@RequestBody Model model) {
-        Model oldModel = modelRepository.findById(model.getId()).orElse(null);
-        oldModel.setApi(oldModel.getApi());
-        oldModel.setName(oldModel.getName());
-        oldModel.setUserName(oldModel.getUserName());
-        oldModel.setPassword(oldModel.getPassword());
-        oldModel.setQuery(oldModel.getQuery());
-        modelRepository.save(oldModel);
+        modelService.put(model);
     }
 
 }

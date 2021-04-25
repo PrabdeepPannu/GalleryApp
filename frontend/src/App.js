@@ -1,6 +1,6 @@
 import { Header } from './components/common';
 import './App.css';
-
+import { Graph } from './components/fieldTypes';
 import React from 'react'
 import { RecommendedMetrics } from './components/RecommendedMetrics/RecomendedMetrics';
 import { RecommendedServices } from './components/RecommendedServices/RecommendedServices';

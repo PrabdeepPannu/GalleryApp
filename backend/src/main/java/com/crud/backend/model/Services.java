@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "service", indexes = @Index(name = "idx_service_name", columnList = "id, name, type"))
-public class Service extends Parent {
+@Table(name = "service", indexes = @Index(name = "idx_service", columnList = "id, name, type"))
+public class Services extends Parent {
 
     @Builder
-    public Service(String id, String name, String type, String iconUrl) {
+    public Services(String id, String name, String type, String iconUrl) {
         super(id, name, type);
         this.iconUrl = iconUrl;
     }
