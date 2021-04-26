@@ -30,6 +30,11 @@ public class Metric extends Parent {
         this.difference = difference;
     }
 
+    public Metric(String id, String name, String type, int difference) {
+        super(id, name, type);
+        this.difference = difference;
+    }
+
     @Column(name = "difference")
     private int difference;
 

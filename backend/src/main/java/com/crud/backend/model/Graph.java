@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,9 +37,15 @@ public class Graph {
     private double hit;
 
     @Column(name = "date")
-    private java.sql.Date date;
+    private Date date;
 
     @Column(name = "metric_id")
     private String metric;
 
+    @Builder
+    public Graph(double hit, Date date, String metric) {
+        this.hit = hit;
+        this.date = date;
+        this.metric = metric;
+    }
 }

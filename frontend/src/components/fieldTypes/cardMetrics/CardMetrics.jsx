@@ -20,7 +20,7 @@ const CardMetrics = ({
   ) : (
     <section>
       <FontAwesomeIcon id="percentage_arrow_red" icon={faArrowDown} />
-      <p id="percentage_red">{inflation + " %"}</p>
+      <p id="percentage_red">{`${inflation} % `}</p>
     </section>
   );
 

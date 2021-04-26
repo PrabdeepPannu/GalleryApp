@@ -1,5 +1,6 @@
 package com.crud.backend.service;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class MetricService implements ServiceImpl<Metric> {
 
     private boolean isPositive = false;
+    private final double defaultDoubleValue = 0.0;
 
     @Autowired
     private MetricRepository metricRepository;
@@ -25,15 +27,26 @@ public class MetricService implements ServiceImpl<Metric> {
     @Autowired
     private GraphRepository graphRepository;
 
-    private double getMaxValue(List<Graph> graphData) {
-        Graph graphMax = graphData.stream().max(Comparator.comparing(v -> v.getHit())).get();
-        System.out.print(graphMax);
+    public double getMaxValue(List<Graph> graphData) {
+        if (graphData == null || graphData.isEmpty()) {
+            return defaultDoubleValue;
+        }
+        Graph graphMax = graphData.stream().max(Comparator.comparing(v -> {
+            if (v != null) {
+                return v.getHit();
+            }
+            return defaultDoubleValue;
+        })).get();
         return graphMax.getHit();
+
     }
 
-    private double getInflation(List<Graph> graphData) {
+    public double getInflation(List<Graph> graphData) {
+        if (graphData == null || graphData.isEmpty()) {
+            return defaultDoubleValue;
+        }
         int size = graphData.size();
-        double inflation = 0.0;
+        double inflation = defaultDoubleValue;
         if (size > 2) {
             double lastIndex = graphData.get(size - 1).getHit();
             double secondLastIndex = graphData.get(size - 2).getHit();
@@ -49,7 +62,9 @@ public class MetricService implements ServiceImpl<Metric> {
         return Math.round(inflation);
     }
 
-    private List<Double> getHitArray(List<Graph> graphData) {
+    public List<Double> getHitArray(List<Graph> graphData) {
+        if (graphData == null || graphData.isEmpty())
+            return Arrays.asList();
         List<Double> hits = graphData.stream().map(v -> v.getHit()).collect(Collectors.toList());
         return hits;
     }
@@ -59,10 +74,12 @@ public class MetricService implements ServiceImpl<Metric> {
         List<Metric> metrics = metricRepository.findAll();
         metrics.forEach(metric -> {
             List<Graph> graphData = graphRepository.getGraphByMetricId(metric.getId());
-            metric.setMaxValue(this.getMaxValue(graphData));
-            metric.setInflation(this.getInflation(graphData));
-            metric.setGraphData(this.getHitArray(graphData));
-            metric.setPositive(this.isPositive);
+            if (graphData != null) {
+                metric.setMaxValue(this.getMaxValue(graphData));
+                metric.setInflation(this.getInflation(graphData));
+                metric.setGraphData(this.getHitArray(graphData));
+                metric.setPositive(this.isPositive);
+            }
         });
         return metrics;
     }
@@ -72,10 +89,12 @@ public class MetricService implements ServiceImpl<Metric> {
         List<Metric> metrics = metricRepository.getRecommendedMetrics();
         metrics.forEach(metric -> {
             List<Graph> graphData = graphRepository.getGraphByMetricId(metric.getId());
-            metric.setMaxValue(this.getMaxValue(graphData));
-            metric.setInflation(this.getInflation(graphData));
-            metric.setGraphData(this.getHitArray(graphData));
-            metric.setPositive(this.isPositive);
+            if (graphData != null) {
+                metric.setMaxValue(this.getMaxValue(graphData));
+                metric.setInflation(this.getInflation(graphData));
+                metric.setGraphData(this.getHitArray(graphData));
+                metric.setPositive(this.isPositive);
+            }
         });
         return metrics;
     }
@@ -84,9 +103,11 @@ public class MetricService implements ServiceImpl<Metric> {
     public Metric getById(String id) {
         Metric metric = metricRepository.findById(id).orElse(null);
         List<Graph> graphData = graphRepository.getGraphByMetricId(id);
-        metric.setMaxValue(this.getMaxValue(graphData));
-        metric.setInflation(this.getInflation(graphData));
-        metric.setGraphData(this.getHitArray(graphData));
+        if (graphData != null) {
+            metric.setMaxValue(this.getMaxValue(graphData));
+            metric.setInflation(this.getInflation(graphData));
+            metric.setGraphData(this.getHitArray(graphData));
+        }
         return metric;
     }
 
